@@ -1,0 +1,38 @@
+nav 
+    .left
+        a href= "/" 
+            img src="./img/work_logo.png" alt="" class="logo_sz"
+    .right
+        form.fix action="/login" method="POST" 
+            .login 
+                input type="text" placeholder="Username" name="username" class="search_inp stand_shadow index_inp"
+                input type="password" placeholder="Password" name="password" class="search_inp stand_shadow index_inp"
+            input type="Submit" value="Log in" class="nav_submit stand_shadow"
+        a.alwayshidden href="/register"
+            p.nav_submit.stand_shadow.font_serif Register
+        .user_inf.stand_shadow
+            a href="/register_site" 
+                h3 Register
+- if msg != nil
+    .error.stand_shadow
+        h1.error_msg = msg
+        h1.sans_serif x
+- else
+    pass
+article.index_art    
+    - public_posts.each do |content|
+        .post
+            .title
+                h3 = content[0]
+            .content
+                p = content[1]
+            .show_comment
+                p class="plus" +
+                .comments
+                    .overflow_test
+                        -comments.each do |comment_single|
+                            - if comment_single[1] == content[2]
+                                .comment
+                                    p #{comment_single[0]+ "-" + comment_single[3]}
+                    
+                

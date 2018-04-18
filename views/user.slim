@@ -1,0 +1,131 @@
+nav 
+    .left
+        a href="/user" 
+            img src="./img/work_logo.png" alt="" class="logo_sz"
+    .right_2nd
+        .search
+            form.media_form action="/search/user" method="POST"
+                input type="text" placeholder="Search Users" name="search_inp" class="search_inp stand_shadow"
+                input type="submit" value=">" class="nav_submit stand_shadow desk_hide"
+                input type="submit" value="Search" class="nav_submit stand_shadow mob_hide2"
+        .logout    
+                form.media_size action="/logout" method="POST"
+                    input type="submit" value="Logout" class="nav_submit stand_shadow"
+                    a href='/user/info' 
+                        .user_inf.stand_shadow.name
+                                h3 style="color:black" #{user_info[0][0]}
+                                .circle
+                                    img.account_size src="./img/account_circle.png" alt=""/
+.add.stand_shadow id="hide"
+    h4.add_cross +
+.main_art
+    .scheme
+        .single_box.align_title.stand_shadow
+            h1.change_day
+                - day = Time.now.strftime("%A")
+                = day
+                - day = day[0 .. 2].downcase
+        - schedule.each do |excercise|
+            - if excercise[4] == day
+                .scheme_box.stand_shadow
+                    h1.margin_scheme #{excercise[1].to_s + " " + excercise[2].to_s + "x" + excercise[3].to_s}
+                    form action="/delete_excercise" method="post"
+                        input type="hidden" name="excercise_id" value="#{excercise[0]}"
+                        input.remove type="submit" value="+"
+        .excercise_add
+            .scheme_box.stand_shadow
+                form.add_spec action="/excercise_add" method="post"
+                    input.excercise_spec type="text" name="excercise" placeholder="Excercise" 
+                    .reps_x
+                        input.number_spec type="number" name="reps" min="0" max="100" step="1" value="8"
+                        h4 x
+                        input.number_spec type="number" name="sets" min="0" max="100" step="1" value="3"
+                    input type="hidden" name="day" value="#{day}"
+                    input type="hidden" name="link" value="user"
+                    input.submit_spec type="submit" value="+"
+
+    article.posts_article
+        .add_post.stand_shadow
+            form action="/add_post" method="post" class="add_form" name="add_form"
+                .post_title
+                    input.h3_imit type="text" name="title" placeholder="title"
+                .content
+                    input type="radio" name="status" value="private" id="private"
+                        label for="private" private
+                    input type="radio" name="status" value="public" id="public"
+                        label for="public" public
+                    .comment_here
+                        .comment_form 
+                            textarea.inp_area.line_height cols="300" rows="2" type="text" name="text_content" placeholder="Write your post here..." id="content"
+                            input.inp_sbm type="submit" value="Post"
+        - priv_posts.each do |content|
+            .post
+                .stand_shadow.box_radius
+                    .title
+                        h3 = content[0].capitalize
+                    .content
+                        p = content[1]
+                        .comment_here
+                            form action="/comment_private" method="post" class="comment_form"
+                                textarea cols="300" rows="2" type="text" name="comment" class="inp_area line_height" placeholder="Write your comment here..."
+                                input type="hidden" name="post_id" value="#{content[3]}"
+                                input type="hidden" name="name" value="#{user_info[0][0]}"
+                                input type="submit" value="Comment" class="inp_sbm"
+                .show_comment
+                        p class="plus" +
+                        .comments
+                            .overflow_test
+                                -comments.each do |comment_single|
+                                    - if comment_single[1] == content[3]
+                                        .comment
+                                            p #{comment_single[0]+ "-" + comment_single[3]}
+
+        - public_posts.each do |content|
+            .post
+                .title
+                    h3 = content[0].capitalize
+                .content
+                    p = content[1]
+                    .comment_here
+                        form action="/comment_public" method="post" class="comment_form"
+                            textarea name="comment" cols="300" rows="2" class="inp_area line_height" placeholder="Write your comment here..."
+                            input type="hidden" name="post_id" value="#{content[3]}"
+                            input type="submit" value="comment" class="inp_sbm"
+                .show_comment
+                    p class="plus" +
+                    .comments
+                        .overflow_test
+                            -comments.each do |comment_single|
+                                - if comment_single[1] == content[3]
+                                    .comment
+                                        p #{comment_single[0]+ "-" + comment_single[3]}
+    .friend_box
+        .friends
+            .scheme_box.align_title.stand_shadow
+                h3.font_color.change_day Friends
+            -friends.each do |friend|
+                .single_box.stand_shadow
+                    -change.each do |friend_stat|
+                        -if friend_stat[1] == friend[0]
+                            .stat_single
+                                p.orkar #{friend_stat[2]} 
+                                p.orkar #{friend_stat[0]}
+                    .stat_single_right
+                        h3 =friend[1]
+                        form action="/remove_friend" method="post"
+                            input type="hidden" name="remove" value="#{friend[1]}"
+                            input.remove type="submit" value="+"
+        .request_click
+            .request_title
+                h1 Friend Requests
+                img.arrow_size src="./img/arrow.png" alt=""
+            .requests 
+                -friend_requests.each do |single|
+                    .request
+                        form action="/accept_friend" method="post"
+                            input type="hidden" name="adding_id" value="#{single[1]}"
+                            input.friend_cross type="submit" value="+"
+                        h3 = single[0]
+                        form action="/remove_friend" method="post"
+                            input type="hidden" name="remove" value="#{single[0]}"
+                            input.remove_cross type="submit" value="+"

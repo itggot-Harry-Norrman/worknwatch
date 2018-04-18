@@ -1,0 +1,22 @@
+nav 
+    .left
+        a href= "/" 
+            img src="./img/work_logo.png" alt="" class="logo_sz"
+    .right
+        form action="/login" method="POST"
+            input type="text" placeholder="Username" name="username" class="search_inp stand_shadow"
+            input type="password" placeholder="Password" name="password" class="search_inp stand_shadow"
+            input type="Submit" value="Log in" class="nav_submit stand_shadow"
+        .user_inf.stand_shadow
+            a href="/register_site" 
+                h3 Register
+.main_art.flex_change
+    
+    .add_stat
+        .title.stat_title
+            h3 Register
+        form action="/register" method="POST" class="register"
+            input.stand_inp type="text" placeholder="Username" name="username"
+            input.stand_inp type="password" placeholder="Password" name="password"
+            input.stand_inp type="password" placeholder="Repeat password" name="password2"
+            input.nav_submit.submit_size type="submit" value="Register"

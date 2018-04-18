@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <link href="../css/style.css" rel="stylesheet" />
+        <nav>
+            <div class="left">
+                <a href="/user">
+                    <img alt="" class="logo_sz" src="../img/work_logo.png" />
+                </a>
+            </div>
+            <div class="search">
+                <form action="/search/user" method="POST">
+                    <input class="search_inp stand_shadow" name="search_inp" placeholder="Search Users" type="text" />
+                    <input class="nav_submit stand_shadow" type="submit" value="Search" />
+                </form>
+                <form action="/logout" method="POST">
+                    <input class="nav_submit stand_shadow" type="submit" value="Logout" />
+                </form>
+                <a href="/user/info">
+                    <div class="user_inf stand_shadow">
+                        <h3 style="color:black">grabb</h3>
+                        <div class="circle">
+                            <img alt="" class="account_size" src="../img/account_circle.png" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+        <div class="main_art info_art">
+            <div class="add_stat stand_shadow">
+                <div class="title stat_title">
+                    <h3>Add an Excercise</h3>
+                </div>
+                <form action="/excercise_add" class="add_ex" method="post" name="add_form">
+                    <input class="stand_inp self_align" name="excercise" placeholder="Excercise" type="text" />
+                    <div class="rep">
+                        <div class="reps">
+                            <h3>reps</h3>
+                            <input class="stand_inp" max="100" min="0" name="reps" step="1" type="number" value="8"
+                            />
+                        </div>
+                        <div class="reps">
+                            <h3>x</h3>
+                        </div>
+                        <div class="reps">
+                            <h3>sets</h3>
+                            <input class="stand_inp" max="100" min="0" name="sets" step="1" type="number" value="3"
+                            />
+                        </div>
+                    </div>
+                    <select class="stand_inp self_align" name="day">
+                        <option class="opt" value="mon">Monday</option>
+                        <option class="opt" value="tue">Tuesday</option>
+                        <option class="opt" value="wed">Wednesday</option>
+                        <option class="opt" value="thu">Thursday</option>
+                        <option class="opt" value="fri">Friday</option>
+                        <option class="opt" value="sat">Saturday</option>
+                        <option class="opt" value="sun">Sunday</option>
+                    </select>
+                    <input class="nav_submit self-align" type="submit" value="Add Excercise" />
+                </form>
+            </div>
+            <div class="add_stat stand_shadow">
+                <div class="title stat_title">
+                    <h3>Add a Stat</h3>
+                </div>
+                <form action="/add_stat" class="add_ex" method="post">
+                    <Select class="stand_inp self_align" name="lift">
+                        <option value="Squat">Squat</option>
+                        <option value="Overhead Press">Overhead Press</option>
+                        <option value="Push Press">Push Press</option>
+                        <option value="Deadlift">Deadlift</option>
+                        <option value="Sumo Deadlift">Sumo Deadlift</option>
+                        <option value="Chin-up">Chin-up</option>
+                        <option value="Pull-up">Pull-up</option>
+                        <option value="Pendlay Row">Pendlay Row</option>
+                        <option value="Bench Press">Bench Press</option>
+                        <option value="Incline Bench Press">Incline Bench Press</option>
+                        <option value="Dip">Dip</option>
+                    </Select>
+                    <input class="stand_inp self_align" min="0" name="weight" step="1" type="number" value="100" />
+                    <input class="nav_submit self_align" type="submit" value="Add new stat" />
+                </form>
+                <div class="display">
+                    <h3>Display stat</h3>
+                    <form action="/display_stat" class="display" method="post">
+                        <Select class="stand_inp" name="lift">
+                            <option value="Squat">Squat</option>
+                            <option value="Overhead Press">Overhead Press</option>
+                            <option value="Push Press">Push Press</option>
+                            <option value="Deadlift">Deadlift</option>
+                            <option value="Sumo Deadlift">Sumo Deadlift</option>
+                            <option value="Chin-up">Chin-up</option>
+                            <option value="Pull-up">Pull-up</option>
+                            <option value="Pendlay Row">Pendlay Row</option>
+                            <option value="Bench Press">Bench Press</option>
+                            <option value="Incline Bench Press">Incline Bench Press</option>
+                            <option value="Dip">Dip</option>
+                        </Select>
+                        <input class="nav_submit" type="submit" value="Display This" />
+                    </form>
+                </div>
+            </div>
+            <div class="add_stat stand_shadow">
+                <div class="title stat_title">
+                    <h3>Statistics</h3>
+                </div>
+                <div class="stats">
+                    <div class="test">
+                    <div class="single_stat">
+                        <p>2018-04-12 Squat 100kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="8" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-12 Squat 100kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="11" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-12 Dip 100kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="13" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-12 Sumo Deadlift 100kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="14" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-12 Bench Press 100kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="15" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 99kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="17" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                    <div class="single_stat">
+                        <p>2018-04-13 Squat 120kg</p>
+                        <form action="/remove_stat" method="post">
+                            <input name="stat_id" type="hidden" value="19" />
+                            <input class="remove" type="submit" value="+" />
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/jquery-3.2.1.min.js"></script>
+    </div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#hide").ready(function () {
+        $(".add_post").hide();
+        $('.requests').hide();
+        $('.comments').hide();
+    });
+    $("#hide").click(function () {
+        $(this).toggleClass("rotate_this")
+        $(".add_post").slideToggle(400);
+    });
+    $('.plus').click(function () {
+        $(this).siblings(this).slideToggle(400)
+        $(this).siblings(this).children()
+        $(this).toggleClass("rotate_this")
+    });
+
+    $('div.comment_section:empty').hide();
+    $('.arrow_size').click(function () {
+        $(this).toggleClass("rotate_arrow");
+        $('.requests').slideToggle(400)
+    });
+    $('div.requests:empty').append('<p>You have no friend requests at the moment</p>')
+    $('div.comments:empty').append('<p>This post has not yet been commented on</p>')
+    $('div.error:empty').hide()
+    $('.sans_serif').click(function () {
+        $('.error').slideUp(400)
+    });
+    $('div.search_results:empty').append(
+        "<div class='search_boxes' style='justify-content: space-around;'><h3>No results for this search</h3></div>"
+    )
+</script>
+
+</html>

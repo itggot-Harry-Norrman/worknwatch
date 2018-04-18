@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+html lang="en"
+    head
+        meta charset="UTF-8"/
+        meta name="viewport" content="width=device-width, initial-scale=1.0"/
+        meta http-equiv="X-UA-Compatible" content="ie=edge"/
+        link rel="stylesheet" href="css/style.css"/
+        link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"
+        title Document
+    body
+        .wrapper
+            ==yield
+    script src="js/jquery-3.2.1.min.js"
+    javascript:
+            $("#hide").ready(function(){
+                $(".add_post").hide();
+                $('.requests').hide();
+                $('.comments').hide();
+            });
+            $("#hide").click(function(){
+                $(this).toggleClass("rotate_this")
+                $(".add_post").slideToggle(400);
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+            $('.plus').click(function(){
+                $(this).siblings(this).slideToggle(400)
+                $(this).siblings(this).children()
+                $(this).toggleClass("rotate_this")
+            });
+            
+            $('div.comment_section:empty').hide();
+            $('.arrow_size').click(function() {
+                $(this).toggleClass("rotate_arrow");
+                $('.requests').slideToggle(400)
+            });
+            $('div.requests:empty').append('<p>You have no friend requests at the moment</p>')
+            $('div.overflow_test:empty').append('<p>This post has not yet been commented on</p>')
+            $('div.error:empty').hide()
+            $('.sans_serif').click(function(){
+                $('.error').slideUp(400)
+            });
+            $('div.search_results:empty').append("<div class='search_boxes' style='justify-content: space-around;'><h3>No results for this search</h3></div>")

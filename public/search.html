@@ -1,0 +1,28 @@
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><meta content="ie=edge" http-equiv="X-UA-Compatible" /><link href="css/style.css" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet" /><title>Document</title></head><body><div class="wrapper"><link href="../css/style.css" rel="stylesheet" /><nav><div class="left"><a href="/user"><img alt="" class="logo_sz" src="../img/work_logo.png" /></a></div><div class="search"><form action="/search/user" method="POST"><input class="search_inp stand_shadow" name="search_inp" placeholder="Search Users" type="text" /><input class="nav_submit stand_shadow" type="submit" value="Search" /></form><form action="/logout" method="POST"><input class="nav_submit stand_shadow" type="submit" value="Logout" /></form><a href="/user/info"><div class="user_inf stand_shadow"><h3 style="color:black">grabb</h3><div class="circle"><img alt="" class="account_size" src="../img/account_circle.png" /></div></div></a></div></nav><article class="main_art"><div class="scheme"><div class="single_box align_title stand_shadow"><h1 class="change_day">Friday</h1></div><div class="scheme_box stand_shadow"><h1 class="margin_scheme">fri 3x8</h1><form action="/delete_excercise" method="post"><input name="excercise_id" type="hidden" value="6" /><input class="remove" type="submit" value="+" /></form></div><div class="excercise_add"><div class="scheme_box stand_shadow"><form action="/excercise_add" class="add_spec" method="post"><input class="excercise_spec" name="excercise" placeholder="Excercise" type="text" /><input class="number_spec" max="100" min="0" name="reps" step="1" type="number" value="8" /><input class="number_spec" max="100" min="0" name="sets" step="1" type="number" value="3" /><input name="day" type="hidden" value="fri" /><input name="link" type="hidden" value="user" /><input class="submit_spec" type="submit" value="+" /></form></div></div></div><div class="search_column"><div class="title stat_title"><h3>Results for: g</h3></div><div class="search_results"><div class="search_boxes"><h3>grapp</h3><form action="/friend_request" method="POST"><input name="username" type="hidden" value="grapp" /><input name="user_id" type="hidden" value="8" /><input class="nav_submit search_sbm" type="submit" value="Friend request" /></form></div><div class="search_boxes"><h3>grobb</h3><form action="/friend_request" method="POST"><input name="username" type="hidden" value="grobb" /><input name="user_id" type="hidden" value="7" /><input class="nav_submit search_sbm" type="submit" value="Friend request" /></form></div></div></div><div class="friend_box"><div class="friends"><div class="scheme_box align_title stand_shadow"><h3 class="font_color change_day">Friends</h3></div><div class="single_box stand_shadow"><div class="stat_single"><p class="orkar">+0.0% </p><p class="orkar">Overhead Press</p></div><div class="stat_single_right"><h3>ny</h3><form action="/remove_friend" method="post"><input name="remove" type="hidden" value="[3, &quot;ny&quot;]" /><input class="remove" type="submit" value="+" /></form></div></div><div class="single_box stand_shadow"><div class="stat_single"><p class="orkar">-1.0% </p><p class="orkar">Squat</p></div><div class="stat_single_right"><h3>harry</h3><form action="/remove_friend" method="post"><input name="remove" type="hidden" value="[6, &quot;harry&quot;]" /><input class="remove" type="submit" value="+" /></form></div></div></div></div></article><script src="../js/jquery-3.2.1.min.js"></script></div></body><script src="js/jquery-3.2.1.min.js"></script><script>$("#hide").ready(function(){
+    $(".add_post").hide();
+    $('.requests').hide();
+    $('.comments').hide();
+});
+$("#hide").click(function(){
+    $(this).toggleClass("rotate_this")
+    $(".add_post").slideToggle(400);
+});
+$('.plus').click(function(){
+    $(this).siblings(this).slideToggle(400)
+    $(this).siblings(this).children()
+    $(this).toggleClass("rotate_this")
+});
+
+$('div.comment_section:empty').hide();
+$('.arrow_size').click(function() {
+    $(this).toggleClass("rotate_arrow");
+    $('.requests').slideToggle(400)
+});
+$('div.requests:empty').append('<p>You have no friend requests at the moment</p>')
+$('div.comments:empty').append('<p>This post has not yet been commented on</p>')
+$('div.error:empty').hide()
+$('.sans_serif').click(function(){
+    $('.error').slideUp(400)
+});
+$('div.search_results:empty').append("<div class='search_boxes' style='justify-content: space-around;'><h3>No results for this search</h3></div>")</script></html>
